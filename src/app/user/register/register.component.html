@@ -1,0 +1,71 @@
+<div class="w-full min-h-screen bg-no-repeat bg-cover bg-fixed" style="background-image: url('https://cdn.theinnerhour.com/assets/images/authentication/banner.png')">
+  <div class="flex flex-col sm:flex-row justify-center items-center h-screen">
+    <div class="flex-1 hidden sm:block items-start">
+      <!-- Content for the left side -->
+      <h1 class="text-4xl sm:text-5xl md:text-5xl leading-40 font-bold text-green-800 text-center mt-0 mb-4 sm:mt-2 sm:mb-8 md:mt-4 md:mb-10 mx-4 sm:mx-8 md:mx-12 font-quicksand font-semibold">
+        Welcome to
+      </h1>
+      <h1 class="text-4xl sm:text-5xl md:text-5xl leading-40 font-bold text-green-800 text-center mt-0 mb-8 sm:mt-2 sm:mb-10 md:mt-4 md:mb-12 mx-4 sm:mx-8 md:mx-12 font-quicksand font-semibold">
+        JIITAK !
+      </h1>
+    </div>
+    
+    
+
+    <div class="flex-1 mt-8">
+      <!-- Content for the right side -->
+      <div class="min-h-screen py-6 flex flex-col justify-center sm:py-12">
+        <div class="relative py-3 sm:max-w-xl sm:mx-auto w-96">
+          <div class="relative px-4 py-10 bg-white mx-8 md:mx-0 shadow rounded-2xl sm:p-10">
+            <div class="w-full mx-auto">
+              <app-alert *ngIf="showAlert" [color]="alertColor">
+                {{ alertMsg }}
+              </app-alert>
+              <div class="flex items-center justify-center space-x-5">
+                <div class="block pl-2 font-semibold text-xl text-gray-700 text-center font-quicksand">
+                  <h2 class="text-center">SignUp</h2>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-center mt-4 font-quicksand">
+                <p class="text-gray-500">
+                  Already have an account?
+                  <a routerLink="/login" class="font-semibold" style="color: #ff0000;">Login</a>
+                </p>
+                
+                
+              </div>
+              <hr class="mt-4 border-gray-300">
+
+              
+
+              <form [formGroup]="registerForm" (ngSubmit)="register()">
+                <div class="divide-y divide-white">
+                  <div class="py-8 text-base leading-6 space-y-4 text-gray-300 sm:text-lg sm:leading-7">
+                    <div class="flex flex-col">
+                        <app-input [control]="name" type="email" placeholder="Enter Name"></app-input>
+                      </div>
+                  
+                    <div class="flex flex-col">
+                      <app-input [control]="email" type="email" placeholder="Enter Email"></app-input>
+                    </div>
+                    <div class="flex flex-col mb-4">
+                      <app-input [control]="password" type="password" placeholder="Password (min 8 characters)*"></app-input>
+                    </div>
+                    
+                  </div>
+                  <div class="pt-4 flex items-center justify-center space-x-4">
+                    <button [disabled]="registerForm.invalid" class="flex justify-center items-center w-40 h-12 text-white rounded-full focus:outline-none disabled:bg-gray-300 bg-red-500 text-xs font-quicksand tracking-wider font-semibold" type="submit">LOGIN</button>
+                  </div>
+                  
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+ 

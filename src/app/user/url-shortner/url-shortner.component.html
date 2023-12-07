@@ -1,0 +1,125 @@
+<header id=""  class="bg-secondary mt-4">
+    
+ 
+    <nav *ngIf="showNavBar" class="bg-white fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-white-600 shadow-lg">
+      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 " *ngIf="!authenticated">
+       
+        <div class="flex md:order-2" >
+          <a routerLink="login"><button type="button" (click)="toggleNavbar()" class="text-white bg-red-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-quicksand font-medium rounded-full text-sm px-6 py-2 text-center mr-3 md:mr-0  dark:hover:bg-red-400 dark:focus:ring-red-50">Login</button></a>
+  
+          <button type="button" (click)="toggleMenu()" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" [attr.aria-expanded]="isMenuOpen ? 'true' : 'false'">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+        
+        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky" [ngClass]="{ 'hidden': !isMenuOpen }">
+          <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white">
+            <li>
+              <a routerLink="/" routerLinkActive="text-green-800" [routerLinkActiveOptions]="{exact: true}" class="text-gray-700 rounded md:bg-transparent md:text-gray-700 md:p-0 md:dark:text-gray-500 dark:text-gray-121 dark:hover:text-white" aria-current="page">Home</a>
+            </li>
+            
+           
+          </ul>
+          
+          
+        </div>
+        
+       
+      </div>
+  
+      <!-- //authenticated -->
+      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4" *ngIf="authenticated">
+        <a href="" class="flex items-center">
+         
+  
+  
+  
+    
+        </a>
+        
+        <div class="flex md:order-2" *ngIf="authenticated">
+          <a routerLink="/login" (click)="logout()"><button type="button" (click)="toggleNavbar()" class="text-white bg-red-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-quicksand font-medium rounded-full text-sm px-6 py-2 text-center mr-3 md:mr-0 bg-red-500 dark:hover:bg-red-400 dark:focus:ring-red-50">Logout</button></a>
+  
+          <button type="button" (click)="toggleMenu()" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" [attr.aria-expanded]="isMenuOpen ? 'true' : 'false'">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky" [ngClass]="{ 'hidden': !isMenuOpen }">
+          <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white">
+            <li>
+              <a routerLink="/home" routerLinkActive="text-green-800" [routerLinkActiveOptions]="{exact: true}" class="text-gray-700 rounded md:bg-transparent md:text-gray-700 md:p-0 md:dark:text-gray-500 dark:text-gray-121 dark:hover:text-white" aria-current="page">Home</a>
+            </li>
+            
+            <li >
+             
+            </li>
+            <li >
+     
+            </li>
+           
+            <li >
+              
+            <li >
+           
+            </li>
+          </ul>
+          
+          
+        </div>
+        
+       
+      </div>
+      
+    </nav>
+    
+    
+    
+    </header>
+    <body>
+      <main>
+        <div id="header-div" class="">
+          <h1 class="">Link Shortener</h1>
+        </div>
+    
+        <!-- link input and shorten button -->
+        <div id="content-div">
+          <div style="margin-left: 130px; margin-top: 40px; margin-bottom: 50px;">
+            <form #urlForm="ngForm" (ngSubmit)="shortenUrl(urlForm.value)">
+              <div style="display: flex; align-items: center;">
+                <input type="text" class="text-field content-row" placeholder="Enter URL here . . ." id="input-field"
+                       required name="inputUrl" [(ngModel)]="inputUrl" #inputUrlField="ngModel" />
+      
+                <div style="margin-left: 10px;">
+                  <button type="submit" class="content-row button">Shorten URL</button>
+                </div>
+                <div style="margin-left: 10px; "><button type="button" (click)="clearInput()" class="content-row button">Clear</button></div>
+               
+              </div>
+            </form>
+          </div>
+    
+          <!-- Output and copy -->
+          <div id="output-div">
+            <div class="content-row" id="new-url-label">
+              <a [href]="'http://localhost:4200/' + response_url">{{ 'Your short URL: http://localhost:4200/' + response_url }}</a>
+            </div>
+            
+    
+            <div id="new-url" class="content-row"></div>
+            <button type="button" id="copy-btn" data-clipboard-target="#new-url" class="content-row button">Copy</button>
+          </div>
+    
+          <div class="" id="error-div">
+            <p class="content-row" id="error-text"></p>
+          </div>
+        </div>
+      </main>
+      <!--App script-->
+    
+           </body>
